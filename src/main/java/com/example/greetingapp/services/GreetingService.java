@@ -8,12 +8,13 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class GreetingService implements IGreetingService{
+    AtomicLong atomicLong =new AtomicLong();
     @Override
-    public Greeting addGreeting() {
-        AtomicLong atomicLong =new AtomicLong();
+    public Greeting addGreeting(User user) {
+
         Greeting greeting=new Greeting();
         greeting.setId(atomicLong.incrementAndGet());
-        greeting.setMessage("Hello World");
+        greeting.setMessage("Hello"+" "+user.toString());
         return greeting;
     }
 
