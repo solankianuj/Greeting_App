@@ -4,12 +4,16 @@ import com.example.greetingapp.model.Greeting;
 import com.example.greetingapp.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 @Service
 public class GreetingService implements IGreetingService{
     @Override
     public Greeting addGreeting() {
+        AtomicLong atomicLong =new AtomicLong();
         Greeting greeting=new Greeting();
-        greeting.setGreeting("Hello World....");
+        greeting.setId(atomicLong.incrementAndGet());
+        greeting.setMessage("Hello World");
         return greeting;
     }
 
